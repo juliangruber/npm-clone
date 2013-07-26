@@ -1,0 +1,31 @@
+{
+  "name": "npm-clone",
+  "description": "Clone a node module, install its dependencies and run its tests",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/juliangruber/npm-clone.git"
+  },
+  "homepage": "https://github.com/juliangruber/npm-clone",
+  "main": "index.js",
+  "bin": {
+    "npm-clone": "./index.js"
+  },
+  "dependencies": {
+    "repo-url": "~0.1.0"
+  },
+  "keywords": [
+    "git",
+    "clone",
+    "scm",
+    "npm",
+    "module",
+    "shell"
+  ],
+  "author": {
+    "name": "Julian Gruber",
+    "email": "mail@juliangruber.com",
+    "url": "http://juliangruber.com"
+  },
+  "license": "MIT"
+}
