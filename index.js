@@ -2,6 +2,8 @@
 
 var repoUrl = require('repo-url');
 var spawn = require('child_process').spawn;
+var parse = require('url').parse;
+var base = require('path').basename;
 var commands = process.argv.slice(2);
 
 var name = commands.pop();
@@ -22,7 +24,7 @@ get(name, function (err, url) {
 
   run('git', ['clone', url], function (code) {
     if (code != 0) process.exit(code);
-    process.chdir(process.cwd() + '/' + name);
+    process.chdir(process.cwd() + '/' + dirname(url));
 
     if (cmd('install') || cmd('test') || cmd('all')) {
       run('npm', ['install'], function (code) {
@@ -54,3 +56,6 @@ function error (err) {
   process.exit(1);
 }
 
+function dirname (url) {
+  return base(parse(url).pathname).replace(/\.git$/, '');
+}
