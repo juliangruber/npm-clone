@@ -47,12 +47,12 @@ get(name, function (err, url) {
   if (err) error(err);
 
   run('git', ['clone', url], function (code) {
-    if (code !== 0) process.exit(code);
+    if (code != 0) process.exit(code);
     process.chdir(process.cwd() + '/' + dirname(url));
 
     if (cmd('install') || cmd('test') || cmd('all')) {
       run('npm', ['install'], function (code) {
-        if (code !== 0) process.exit(code);
+        if (code != 0) process.exit(code);
 
         if (cmd('test') || cmd('all')) {
           run('npm', ['test'], function (code) {
