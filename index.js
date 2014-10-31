@@ -5,6 +5,7 @@ var spawn = require('child_process').spawn;
 var parse = require('url').parse;
 var base = require('path').basename;
 var commands = process.argv.slice(2);
+var pkg = require('./package.json');
 
 var name = commands.pop();
 if (!name) error('module name required');
@@ -12,6 +13,29 @@ if (!name) error('module name required');
 function cmd (str) {
   return commands.indexOf(str) > -1
     || commands.indexOf('--' + str) > -1;
+}
+
+
+function help() {
+  console.log(pkg.description);
+  console.log('');
+  console.log('Usage');
+  console.log('  $ npm-clone [FLAG] [TYPE] <module-name>');
+  console.log('  Types: all, install, test');
+  console.log('  Flags: --ssh, --https');
+  console.log('');
+  console.log('Example');
+  console.log('  $ npm-clone --ssh all periodic');
+}
+
+if (process.argv.indexOf('-h') !== -1 || process.argv.indexOf('--help') !== -1) {
+  help();
+  return;
+}
+
+if (process.argv.indexOf('-v') !== -1 || process.argv.indexOf('--version') !== -1) {
+  console.log(pkg.version);
+  return;
 }
 
 var get =
