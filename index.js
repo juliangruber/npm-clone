@@ -48,7 +48,7 @@ get(name, function (err, url) {
 
   run('git', ['clone', url, name], function (code) {
     if (code != 0) process.exit(code);
-    process.chdir(process.cwd() + '/' + dirname(url));
+    process.chdir(name);
 
     if (cmd('install') || cmd('test') || cmd('all')) {
       run('npm', ['install'], function (code) {
