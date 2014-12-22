@@ -46,7 +46,7 @@ var get =
 get(name, function (err, url) {
   if (err) error(err);
 
-  run('git', ['clone', url], function (code) {
+  run('git', ['clone', url, name], function (code) {
     if (code != 0) process.exit(code);
     process.chdir(process.cwd() + '/' + dirname(url));
 
