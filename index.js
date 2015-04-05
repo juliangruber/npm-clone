@@ -21,8 +21,8 @@ function help() {
   console.log('');
   console.log('Usage');
   console.log('  $ npm-clone [FLAG] [TYPE] <module-name>');
-  console.log('  Types: all, install, test');
-  console.log('  Flags: --ssh, --https');
+  console.log('  Types: all, install, test, link');
+  console.log('  Flags: --ssh, --https, --global');
   console.log('');
   console.log('Example');
   console.log('  $ npm-clone --ssh all periodic');
@@ -51,7 +51,7 @@ get(name, function (err, url) {
     process.chdir(name);
 
     if (cmd('install') || cmd('test') || cmd('all')) {
-      run('npm', ['install'], function (code) {
+      run('npm', [cmd('global') ? 'link' : 'install'], function (code) {
         if (code != 0) process.exit(code);
 
         if (cmd('test') || cmd('all')) {
