@@ -24,6 +24,9 @@ npm-clone all periodic
 
 # flags still apply
 npm-clone --ssh all periodic
+
+# link globally
+npm-clone --global install periodic
 ```
 
 ## Installation
