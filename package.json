@@ -12,7 +12,7 @@
     "npm-clone": "./index.js"
   },
   "dependencies": {
-    "repo-url": "~0.1.0"
+    "repo-url": "^1.0.0"
   },
   "keywords": [
     "git",
